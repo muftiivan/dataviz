@@ -48,7 +48,7 @@ Pada grafik tersebut nampak banyak titik-titik observasi yang menumpuk. Perbakil
 ```{r plot-household2}
 plot_household <- 
   plot_household +
-  geom_point(alpha = 01) +
+  geom_point(alpha = 0.8) +
   scale_colour_manual(values = c("#162c4f",
                                  "#2c89a0",
                                  "#37c871",
@@ -126,6 +126,7 @@ grid::grid.raster(logo, x = 0.0, y = 0.0, just = c('left', 'bottom'), height = u
 ```
 
 Selain dengan menggunakan *preset theme* dari ggplot2 atau meracik tema sendiri, Anda juga dapat menggunakan paket-paket R yang menyediakan tema untuk ggplo2. Diantaranya adalah paket hrbrthemes ggpubr dan paket ggthemr. Pada modul selanjutnya Anda akan belajar menggunakan salahsatu tema dari paket tersebut. Namun sebelumnya, dapatkah Anda menambahkan baris kode `facet_wrap(~year)` pada plot_household? Apakah yang akan terjadi pada grafik tersebut?
+#bisa pake facet_grid
 
 ```{r facet-plot_household}
 plot_household +
