@@ -63,7 +63,7 @@ grafik_un_smp <- function(.data, matpel, tahun_awal, tahun_akhir, judul = "Perub
         label = nama_kecamatan,
         vjust = -0.6
       ),
-      family = "Manjari",
+      family = "Arial",
       color = "gray15",
       size = 3.5
     ) +
