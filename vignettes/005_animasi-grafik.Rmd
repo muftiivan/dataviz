@@ -16,8 +16,8 @@ knitr::opts_chunk$set(echo = TRUE, fig.align = "center", message = FALSE, warnin
 Pembuatan animasi dari grafik statis yang diolah menggunakan paket ggplot2 dapat dilakukan dengan menggunakan paket gganimate. Anda dipersilahkan untuk mengaktifkan kedua paket tersebut dengan mengisi bagian ___ berikut dengan jawaban yang tepat. Selain itu dalam modul ini kita akan menggunakan tema flat dark dari paket ggthemr (paket ggthemr dapat dipasang dengan menjalankan fungsi `remotes::install_github('cttobin/ggthemr')`).
 
 ```{r load-package}
-library(___)
-library(___)
+library(ggplot2)
+library(gganimate)
 library(ggthemr) # Dipasang dengan cara menjalankan kode: remotes::install_github('cttobin/ggthemr')
 ggthemr("flat dark", type = "outer") # Anda juga dapat menggunakan tema lain. Pilihan tema dapat dilihat di https://github.com/cttobin/ggthemr#palettes
 ```
@@ -27,15 +27,15 @@ Anda akan menggunakan dataset weather yang memiliki informasi mengenai data cuac
 ```{r load-data}
 load("../data/weather.rda")
 weather
-___(weather)
-___(weather)
+dim(weather)
+str(weather)
 ```
 
 Sekarang buatlah *line graph* untuk mengamati pola perubahan suhu terhadap waktu dengan menggunakan ggplot2 dan simpan hasilnya ke dalam obyek R bernama plot_temperature! Pergunakan warna garis yang berbeda untuk setiap lokasi dan atur semua ketebalan garis menjadi 0.8.
 
 ```{r plot-temperature1}
 plot_temperature <- 
-  ggplot(weather, aes(x = ___, y = temperature, colour = ___)) +
+  ggplot(weather, aes(x = time, y = temperature, colour = location)) +
   geom_line(lwd = 0.8)
 plot_temperature
 ```
@@ -45,14 +45,14 @@ Pada grafik di atas, label pada sumbu x hanya menunjukan informasi tanggal. Perb
 ```{r plot-temperature2}
 ___ <- 
   plot_temperature +
-  ___ +
+  scale_x_datetime(date_breaks = "9 hours") +
   theme(
     axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1),
     legend.position = "___"
   ) +
   labs(
-    x = "___",
-    y = "___",
+    x = "waktu",
+    y = "suhu",
     colour = NULL
   )
 plot_temperature
@@ -75,7 +75,7 @@ plot_weather <- ggplot(weather, aes(x = ___, y = pressure, colour = ___, size = 
 plot_weather
 ```
 
-Anda telah berhasi membuat *scatterplot* dasar antara tekanan dan suhu. Pada grafik tersebut terjadi *overplotting* dikarenakan penumpukan data observasi dari berbagai lokasi. Selanjutnya Anda diminta untuk membuat animasi yang menampilkan *scatterplot* setiap lokasi secara bergiliran. Pada *chunk* berikut dilakukan beberapa kostumisasi pada grafik sebelum dilakukan pembuatan animasi. Salah satu kostumisasi terpenting adalah menghapus legenda location dari grafik dan mengatur posisi legenda windspeed. Isilah bagian ___ pada `colour = ___` menjadi TRUE serta isilah argumen `legend.position = c(___, ___)` dengan angka 0.9 dan 0.8!
+Anda telah berhasi membuat *scatterplot* dasar antara tekanan dan suhu. Pada grafik tersebut terjadi *overplotting* dikarenakan penumpukan data observasi dari berbagai lokasi. Selanjutnya Anda diminta untuk membuat animasi yang menampilkan *scatterplot* setiap lokasi secara bergiliran. Pada *chunk* berikut dilakukan beberapa kostumisasi pada grafik sebelum dilakukan pembuatan animasi. Salah satu kostumisasi terpenting adalah menghapus legenda location dari grafik dan mengatur posisi legenda windspeed. Isilah bagian ___ pada `colour = ___` menjadi FALSE serta isilah argumen `legend.position = c(___, ___)` dengan angka 0.9 dan 0.8!
 
 ```{r plot-weather2}
 plot_weather <- 
